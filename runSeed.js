@@ -2,12 +2,12 @@
 import { seedGroup } from "./seed.js";
 
 const myConfig = {
-    campusCode: 'CAM-COL-14',
-    primaryColor: '#3E2723',
-    secondaryColor: '#18FFFF',
-    apiBasePath: '/api/v2/col/',
+    campusCode: 'CAM-DAL-09',
+    primaryColor: '#BF360C',
+    secondaryColor: '#651FFF',
+    apiBasePath: '/api/v1/dal/',
     constraints: { 
-        maxPinnedChartParUser: 10
+        notificationBatching: 5
     }
 };
 
