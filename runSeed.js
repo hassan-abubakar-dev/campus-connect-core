@@ -2,13 +2,12 @@
 import { seedGroup } from "./seed.js";
 
 const myConfig = {
-    campusCode: 'CAM-NYC-01',
-    primaryColor: '#1A237E',
-    secondaryColor: '#FF6F00',
-    apiBasePath: '/api/v1/nyc/',
+    campusCode: 'CAM-COL-14',
+    primaryColor: '#3E2723',
+    secondaryColor: '#18FFFF',
+    apiBasePath: '/api/v2/col/',
     constraints: { 
-        maxConcurrentChats: 3, 
-        messageExpiryHours: 24 
+        maxPinnedChartParUser: 10
     }
 };
 

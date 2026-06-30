@@ -43,6 +43,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 export const registerUser = async (req, res) => {
     try {
         const { firstName, surName, email, password } = req.body;
+         console.log('firstName, surName, email, password ',  firstName, surName, email, password )
 
         // 1. Check if user already exists
         const existingUser = await User.findOne({ where: { email } });
@@ -108,6 +109,7 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
+       
         
         // 1. Find the user
         const user = await User.findOne({ where: { email } });
@@ -132,11 +134,17 @@ export const loginUser = async (req, res) => {
             expiresIn: '1h' 
         });
 
+        const profile = await User.findOne({
+            where: { id: user.id },
+            attributes: ['profilePicture']
+        });
+
         // 4. Return success response
         // No cookies set, as we are only using the Bearer token in headers
         return res.status(200).json({ 
             status: 'success', 
             message: 'Login successful.',
+            profilePicture: profile.profilePicture,
             accessToken 
         });
 
