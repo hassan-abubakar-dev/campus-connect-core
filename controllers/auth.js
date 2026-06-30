@@ -11,35 +11,7 @@ import dotenv from 'dotenv';
 import Group from '../models/group.js';
 
 dotenv.config();
-
-/**
- * Registers a new user.
- * Each user is assigned to a groupId based on the request.
- */
-
-// Determine if we are in production
-const isProduction = process.env.NODE_ENV === 'production';
-
-
-
-/**
- * @swagger
- * /api/auth/register:
- * post:
- * summary: Register a new user
- * tags: [Auth]
- * requestBody:
- * required: true
- * content:
- * application/json:
- * schema:
- * $ref: '#/components/schemas/User'
- * responses:
- * 201:
- * description: Account created successfully.
- * 400:
- * description: Email already in use.
- */
+const isDev = process.env.NODE_ENV === 'development';
 export const registerUser = async (req, res) => {
     try {
         const { firstName, surName, email, password } = req.body;
@@ -81,31 +53,7 @@ export const registerUser = async (req, res) => {
     }
 };
 
-/**
- * Authenticates user and returns JWT.
- */
 
-/**
- * @swagger
- * /api/auth/login:
- * post:
- * summary: Authenticate user and return JWT
- * tags: [Auth]
- * requestBody:
- * required: true
- * content:
- * application/json:
- * schema:
- * type: object
- * properties:
- * email: { type: string }
- * password: { type: string }
- * responses:
- * 200:
- * description: Login successful.
- * 401:
- * description: Incorrect password.
- */ 
 export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
